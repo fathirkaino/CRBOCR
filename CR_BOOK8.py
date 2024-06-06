@@ -20,6 +20,9 @@ import random
 import re
 import logging
 
+# Initialize OCR
+ocr = PaddleOCR(lang='en', use_gpu=False)
+
 # Set the logging level to suppress debug and warning messages from PaddleOCR
 logging.getLogger('ppocr').setLevel(logging.ERROR)
 
@@ -234,7 +237,7 @@ def perform_ocr_on_cropped_image(cropped_image, ocr_coords_percentage, threshold
     ocr_area = cropped_rgb[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0]]
 
     # Perform OCR using PaddleOCR
-    ocr = PaddleOCR(lang='en')
+    #ocr = PaddleOCR(lang='en')
     result = ocr.ocr(ocr_area, cls=True)
 
     if result is None or len(result) == 0:
