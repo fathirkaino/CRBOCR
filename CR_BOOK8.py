@@ -30,10 +30,10 @@ import logging
 st.set_page_config(page_icon="📄👁️", layout="wide", initial_sidebar_state="expanded")
 
 # Initialize OCR
-ocr = PaddleOCR(lang='en', use_gpu=False)
+#ocr = PaddleOCR(lang='en', use_gpu=False)
 
 # Set the logging level to suppress debug and warning messages from PaddleOCR
-logging.getLogger('ppocr').setLevel(logging.ERROR)
+#logging.getLogger('ppocr').setLevel(logging.ERROR)
 
 # Function to filter vertical lines
 def vertical_detector(image_path):
