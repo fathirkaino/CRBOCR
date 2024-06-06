@@ -2,7 +2,7 @@
 
 # import dependencies
 import streamlit as st
-from paddleocr import PaddleOCR, draw_ocr
+from paddleocr import PaddleOCR
 from PIL import Image, ImageDraw
 from IPython import display
 import matplotlib.pyplot as plt
