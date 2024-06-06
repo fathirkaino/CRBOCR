@@ -20,6 +20,40 @@ import random
 import re
 import logging
 
+import os
+import requests
+import tarfile
+
+def download_and_extract(url, dest_path):
+    # Ensure the destination directory exists
+    os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+    
+    # Download the file
+    response = requests.get(url, stream=True)
+    if response.status_code == 200:
+        with open(dest_path, 'wb') as file:
+            for chunk in response.iter_content(chunk_size=1024):
+                file.write(chunk)
+        
+        # Extract the tar file
+        if dest_path.endswith("tar"):
+            with tarfile.open(dest_path, "r:gz") as tar:
+                tar.extractall(path=os.path.dirname(dest_path))
+    else:
+        print(f"Failed to download {url}")
+
+# URLs and destination paths
+models = [
+    ("https://paddleocr.bj.bcebos.com/PP-OCRv3/english/en_PP-OCRv3_det_infer.tar", "/root/.paddleocr/whl/det/en/en_PP-OCRv3_det_infer/en_PP-OCRv3_det_infer.tar"),
+    ("https://paddleocr.bj.bcebos.com/PP-OCRv4/english/en_PP-OCRv4_rec_infer.tar", "/root/.paddleocr/whl/rec/en/en_PP-OCRv4_rec_infer/en_PP-OCRv4_rec_infer.tar"),
+    ("https://paddleocr.bj.bcebos.com/dygraph_v2.0/ch/ch_ppocr_mobile_v2.0_cls_infer.tar", "/root/.paddleocr/whl/cls/ch_ppocr_mobile_v2.0_cls_infer/ch_ppocr_mobile_v2.0_cls_infer.tar")
+]
+
+# Download and extract each model
+for url, dest_path in models:
+    download_and_extract(url, dest_path)
+
+
 # Initialize OCR
 #ocr = PaddleOCR(lang='en', use_gpu=False)
 
