@@ -2,8 +2,8 @@
 
 # import dependencies
 import streamlit as st
-from paddleocr import PaddleOCR
-from PIL import Image
+from paddleocr import PaddleOCR, draw_ocr
+from PIL import Image, ImageDraw
 from IPython import display
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,7 +13,10 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import matplotlib.image as mpimg
 import matplotlib as mpl
+import os
+import zipfile
 from collections import defaultdict
+import random
 import re
 import logging
 
