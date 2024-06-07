@@ -410,6 +410,7 @@ def perform_ocr_on_cropped_image(cropped_image, ocr_coords_percentage, threshold
 
     # Perform OCR using PaddleOCR
     #ocr = PaddleOCR(lang='en')
+    ocr = PaddleOCR(lang='en', use_gpu=False)
     result = ocr.ocr(ocr_area, cls=True)
 
     if result is None or len(result) == 0:
