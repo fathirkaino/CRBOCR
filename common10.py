@@ -1,6 +1,13 @@
 # import dependencies
 import streamlit as st
-from paddleocr import PaddleOCR, draw_ocr
+from PIL import Image
+import numpy as np
+from passporteye import read_mrz
+from paddleocr import PaddleOCR
+import re
+from fuzzywuzzy import fuzz
+import pandas as pd
+
 from PIL import Image, ImageDraw
 from IPython import display
 import matplotlib.pyplot as plt
@@ -14,9 +21,9 @@ import matplotlib as mpl
 import os
 import zipfile
 from collections import defaultdict
-import random
+#import random
 import re
-import logging
+#import logging
 from passporteye import read_mrz
 import pandas as pd
 import numpy as np
