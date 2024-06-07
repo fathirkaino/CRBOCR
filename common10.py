@@ -44,7 +44,7 @@ st.markdown("""
 st.write(" 🔍 One-stop solution for extracting information from various documents efficiently. Navigate through the tabs to start processing your documents !")
 
 # Initialize OCR
-ocr = PaddleOCR(lang='en', use_gpu=False)
+# ocr = PaddleOCR(lang='en', use_gpu=False)
 
 # Function to extract MRZ data from the uploaded image using PassportEye
 def extract_mrz_data(image):
